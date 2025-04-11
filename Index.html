@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolutionsTech - Sistema de Agendamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6e8efb;
+            --secondary-color: #a777e3;
+            --dark-color: #000000;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .navbar {
+            background: var(--primary-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: "";
+            background: url('logo.png') no-repeat center center;
+            background-size: 100px;
+            opacity: 0.05;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-section > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+        }
+
+        .btn-outline-light {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo" height="30">
+                SolutionsTech
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Simplifique a gestão do seu salão de beleza</h1>
+            <p class="lead mb-4">Controle de agendamentos, clientes e serviços em um só lugar.</p>
+            <a href="#" class="btn btn-light btn-lg px-5">Comece Agora</a>
+        </div>
+    </section>
+
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon mb-3">🗕️</div>
+                    <h5>Agenda Inteligente</h5>
+                    <p>Visualize, agende e gerencie seus atendimentos com facilidade.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon mb-3">👩‍🎨</div>
+                    <h5>Gestão de Clientes</h5>
+                    <p>Tenha o histórico completo de cada cliente sempre à mão.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon mb-3">📈</div>
+                    <h5>Relatórios e Faturamento</h5>
+                    <p>Acompanhe o crescimento do seu negócio com dados claros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-4">
+                <img src="logo.png" alt="Logo SolutionsTech" height="50" class="mb-3">
+            </div>
+            <h2 class="text-center fw-bold mb-4">Como Funciona</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <h5>1. Cadastre seu salão</h5>
+                    <p>Informações rápidas e fáceis para começar.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>2. Adicione serviços e funcionários</h5>
+                    <p>Personalize conforme o seu negócio.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>3. Comece a agendar</h5>
+                    <p>Controle completo na palma da sua mão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+        <div class="container text-center">
+            <img src="logo.png" alt="Logo SolutionsTech" height="50" class="mb-4">
+            <h2 class="fw-bold mb-4 text-white">Pronto para transformar a gestão do seu salão?</h2>
+            <p class="lead mb-4 text-white">Experimente gratuitamente por 14 dias. Sem compromisso, sem cartão de crédito.</p>
+            <a href="#" class="btn btn-light btn-lg px-5">Comece agora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4 text-center text-lg-start">
+                    <img src="logo.png" alt="Logo" height="40" class="mb-3">
+                    <p>O sistema completo para gestão de salões de beleza e estética.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark">Início</a></li>
+                        <li><a href="#features" class="text-decoration-none text-dark">Recursos</a></li>
+                        <li><a href="#cta" class="text-decoration-none text-dark">Teste Grátis</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Contato</h5>
+                    <p>Email: contato@solutionstech.com.br</p>
+                    <p>Telefone: (11) 99999-9999</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 SolutionsTech. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
