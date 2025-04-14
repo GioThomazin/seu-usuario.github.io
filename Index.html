@@ -4,175 +4,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolutionsTech - Sistema de Agendamento</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>SolutionsTech | Soluções em Gestão para Salões</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #6e8efb;
-            --secondary-color: #a777e3;
-            --dark-color: #000000;
+        /* Nova paleta baseada no seu logotipo */
+        --primary-color: #1a365d;    /* Azul escuro (tom principal) */
+        --secondary-color: #2c5282;  /* Azul médio (destaques) */
+        --accent-color: #4299e1;     /* Azul claro (elementos interativos) */
+        --light-color: #ebf8ff;      /* Fundo claro azulado */
+        --dark-color: #1a202c;       /* Quase preto com tom azulado */
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        color: #2d3748;
+        background-color: #f7fafc;
         }
 
         .navbar {
-            background: var(--primary-color);
+            background-color: var(--dark-color);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 100px 0;
-            position: relative;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
         }
 
-        .hero-section::after {
+        .hero-section::before {
             content: "";
-            background: url('logo.png') no-repeat center center;
-            background-size: 100px;
-            opacity: 0.05;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: url('assets/images/pattern.png') repeat;
+            opacity: 0.03;
             z-index: 0;
         }
 
-        .hero-section > .container {
+        .hero-content {
             position: relative;
             z-index: 1;
         }
 
+        .display-4 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #3182ce;
+            border-color: #3182ce;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            background: var(--accent-color);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            border-left: 4px solid var(--accent-color);
+        }
+
         .feature-icon {
-            font-size: 48px;
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
 
-        .btn-outline-light {
-            border-color: var(--secondary-color);
-            color: var(--secondary-color);
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
-        .btn-outline-light:hover {
-            background-color: var(--secondary-color);
+        .process-step {
+            transition: all 0.3s ease;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
             color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        /* ESTILOS ATUALIZADOS PARA IMAGENS */
+        .team-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1; /* Mantém proporção quadrada */
+            object-fit: cover;
+            display: block;
+        }
+
+        img[src*="logo"], .footer-logo {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         footer {
-            background-color: #f8f9fa;
-            padding: 40px 0;
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
         }
 
         .footer-logo {
             height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h5::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            background: var(--accent-color);
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 80px;
+                text-align: center;
+            }
+            
+            .display-4 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .feature-card {
+                margin-bottom: 30px;
+            }
+            
+            /* ESTILOS ESPECÍFICOS PARA MOBILE */
+            .team-card {
+                max-width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .team-img {
+                height: auto;
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-card {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="Logo" height="30">
+                <img src="./logo-white.png" alt="Logo" class="img-fluid" height="40">
                 SolutionsTech
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#solucoes">Soluções</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#funcionamento">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Simplifique a gestão do seu salão de beleza</h1>
-            <p class="lead mb-4">Controle de agendamentos, clientes e serviços em um só lugar.</p>
-            <a href="#" class="btn btn-light btn-lg px-5">Comece Agora</a>
-        </div>
-    </section>
+    <!-- Seção Hero -->
+    <div class="d-flex flex-wrap gap-3">
+        <!-- Botão Solicitar Demonstração - Agora com scroll suave -->
+        <button onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})" 
+                class="btn btn-primary btn-lg shadow-sm px-4 py-3">
+            Solicitar Demonstração
+        </button>
+        
+        <!-- Botão WhatsApp - Funcionando com link direto -->
+        <a href="https://wa.me/5511932436648?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20da%20SolutionsTech" 
+           class="btn btn-outline-light btn-lg shadow-sm px-4 py-3" 
+           target="_blank" 
+           rel="noopener noreferrer">
+            <i class="fab fa-whatsapp me-2"></i> Falar no WhatsApp
+        </a>
+    </div>
 
-    <section id="features" class="py-5">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <div class="feature-icon mb-3">🗕️</div>
-                    <h5>Agenda Inteligente</h5>
-                    <p>Visualize, agende e gerencie seus atendimentos com facilidade.</p>
+    <!-- Seção Soluções -->
+    <section id="solucoes" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nossas Soluções Completas</h2>
+                <p class="lead">Desenvolvidas para simplificar operações e melhorar a experiência do cliente</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Agendamento Online</h3>
+                        <p>Gerencie horários de forma prática e sem complicações.</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-icon mb-3">👩‍🎨</div>
-                    <h5>Gestão de Clientes</h5>
-                    <p>Tenha o histórico completo de cada cliente sempre à mão.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Relatórios Financeiros</h3>
+                        <p> Monitore receitas, despesas e lucros em tempo real.</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-icon mb-3">📈</div>
-                    <h5>Relatórios e Faturamento</h5>
-                    <p>Acompanhe o crescimento do seu negócio com dados claros.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Otimização de Tempo</h3>
+                        <p>Automatize tarefas repetitivas e foque no que realmente importa</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Gestão Completa</h3>
+                        <p>Tenha tudo em um só lugar, desde agendamentos até o controle financeiro</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="how-it-works" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-4">
-                <img src="logo.png" alt="Logo SolutionsTech" height="50" class="mb-3">
+    <!-- Seção Como Funciona -->
+    <section id="funcionamento" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Processo de Implementação</h2>
+                <p class="lead">Integração perfeita com suas operações atuais</p>
             </div>
-            <h2 class="text-center fw-bold mb-4">Como Funciona</h2>
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <h5>1. Cadastre seu salão</h5>
-                    <p>Informações rápidas e fáceis para começar.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Análise de Necessidades</h4>
+                        <p>Nossos especialistas avaliam seus requisitos e fluxos de trabalho.</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>2. Adicione serviços e funcionários</h5>
-                    <p>Personalize conforme o seu negócio.</p>
+                <div class="col-md-4">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Configuração Personalizada</h4>
+                        <p>Adaptamos a plataforma ao seu modelo de negócios específico.</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>3. Comece a agendar</h5>
-                    <p>Controle completo na palma da sua mão.</p>
+                <div class="col-md-4">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Treinamento e Ativação</h4>
+                        <p>Capacitação completa da equipe e transição suave para nosso sistema.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cta" class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
-        <div class="container text-center">
-            <img src="logo.png" alt="Logo SolutionsTech" height="50" class="mb-4">
-            <h2 class="fw-bold mb-4 text-white">Pronto para transformar a gestão do seu salão?</h2>
-            <p class="lead mb-4 text-white">Experimente gratuitamente por 14 dias. Sem compromisso, sem cartão de crédito.</p>
-            <a href="#" class="btn btn-light btn-lg px-5">Comece agora</a>
+    <!-- Seção Sobre Nós -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">Sobre a SolutionsTech</h2>
+                    <p class="lead">Líderes em soluções de gestão empresarial</p>
+                    <p>Na SolutionsTech, somos especialistas no desenvolvimento de soluções inteligentes para gestão de agendamentos. Criamos um sistema completo e intuitivo, pensado para otimizar processos, aumentar a produtividade e oferecer uma experiência mais eficiente tanto para os profissionais quanto para os clientes.</p>
+                    <p>Nosso objetivo é transformar a rotina de salões de beleza e outros estabelecimentos, proporcionando mais organização e praticidade no dia a dia. Com a nossa plataforma, é possível gerenciar agendamentos, serviços, equipe e controle financeiro em um só lugar — de forma simples e eficaz.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <h3 class="mb-0">10+</h3>
+                            <p class="text-muted">Clientes Corporativos</p>
+                        </div>
+                        <div class="me-4">
+                            <h3 class="mb-0">1</h3>
+                            <p class="text-muted">País</p>
+                        </div>
+                        <div>
+                            <h3 class="mb-0">24/7</h3>
+                            <p class="text-muted">Suporte</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="team-card text-center">
+                                <img src="giovane.jpeg" alt="Giovane Thomazin" class="team-img">
+                                <div class="team-info">
+                                    <h4>Giovane Thomazin</h4>
+                                    <p>CEO & Fundador</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="team-card text-center">
+                                <img src="thais.jpeg" alt="Thais Yoshida" class="team-img">
+                                <div class="team-info">
+                                    <h4>Thais Yoshida</h4>
+                                    <p>Product Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="team-card text-center">
+                                <img src="leo.jpg" alt="Leonardo Kenji" class="team-img">
+                                <div class="team-info">
+                                    <h4>Leonardo Kenji</h4>
+                                    <p>Desenvolvedor Sênior</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="team-card text-center">
+                                <img src="vitor.jpg" alt="Vitor Gabriel" class="team-img">
+                                <div class="team-info">
+                                    <h4>Vitor Gabriel</h4>
+                                    <p>Desenvolvedor Sênior</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Seção CTA -->
+    <section id="contato" class="cta-section">
+        <div class="container text-center py-5">
+            <h2 class="fw-bold mb-4">Pronto para Transformar Seu Negócio?</h2>
+            <p class="lead mb-5">Agende uma demonstração personalizada com nosso especialista</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-lg" placeholder="Seu Nome" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control form-control-lg" placeholder="E-mail Corporativo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control form-control-lg" placeholder="Telefone">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nome do Salão">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-light btn-lg px-5">Solicitar Demonstração</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-5">
+                <p class="mb-3">Ou entre em contato diretamente:</p>
+                <div class="d-flex justify-content-center gap-4">
+                    <a href="tel:+5511932436648" class="text-white"><i class="fas fa-phone me-2"></i> (11) 93243-6648</a>
+                    <a href="mailto:solutionstechio10@gmail.com" class="text-white"><i class="fas fa-envelope me-2"></i> solutionstechio10@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12 mb-4 text-center text-lg-start">
-                    <img src="logo.png" alt="Logo" height="40" class="mb-3">
-                    <p>O sistema completo para gestão de salões de beleza e estética.</p>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <img src="./logo-white.png" alt="Logo" class="footer-logo">
+                    <p>Soluções empresariais para o mercado moderno de beleza e bem-estar.</p>
+                    <div class="social-links mt-4">
+                        <a href="https://www.instagram.com/solutionstech10_/" class="fab fa-instagram" target="_blank"></a>
+                        <a href="https://wa.me/5511932436648?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20da%20SolutionsTech" class="fab fa-whatsapp" target="_blank"></a>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <h5>Links Úteis</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-dark">Início</a></li>
-                        <li><a href="#features" class="text-decoration-none text-dark">Recursos</a></li>
-                        <li><a href="#cta" class="text-decoration-none text-dark">Teste Grátis</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Soluções</h5>
+                        <ul>
+                            <li><a href="#">Agendamento</a></li>
+                            <li><a href="#">Gestão de Clientes</a></li>
+                            <li><a href="#">Análises</a></li>
+                            <li><a href="#">Acesso Mobile</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <h5>Contato</h5>
-                    <p>Email: solutionstechio10@gmail.com</p>
-                    <p>Telefone: (11) 93243-6648</p>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Empresa</h5>
+                        <ul>
+                            <li><a href="#">Sobre Nós</a></li>
+                            <li><a href="#">Liderança</a></li>
+                            <li><a href="#">Carreiras</a></li>
+                            <li><a href="#">Notícias</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Recursos</h5>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Cases</a></li>
+                            <li><a href="#">Webinars</a></li>
+                            <li><a href="#">Central de Ajuda</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Jurídico</h5>
+                        <ul>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Termos de Serviço</a></li>
+                            <li><a href="#">Segurança</a></li>
+                            <li><a href="#">Conformidade</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 SolutionsTech. Todos os direitos reservados.</p>
+            <div class="copyright text-center">
+                <p>&copy; 2025 SolutionsTech. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
+        // Efeito na navbar ao rolar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    </script>
+    <script>
+        // Garante que os botões funcionem mesmo se carregados dinamicamente
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para o botão de demonstração
+            const demoBtn = document.querySelector('.hero-section .btn-primary');
+            if(demoBtn) {
+                demoBtn.addEventListener('click', function() {
+                    const contatoSection = document.getElementById('contato');
+                    if(contatoSection) {
+                        contatoSection.scrollIntoView({behavior: 'smooth'});
+                    } else {
+                        console.error('Seção de contato não encontrada');
+                        window.location.href = '#contato'; // Fallback
+                    }
+                });
+            }
+            
+            // O botão do WhatsApp já funciona naturalmente como link
+        });
+    </script>
+</body>
 </html>
